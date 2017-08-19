@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+
+  .display {
+    border: 1px solid black;
+    width: 440px;
+    height: 660px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -330px;
+    margin-left: -220px;
+  }
+
+  .temp {
+    height: 100px;
+    width: 100px;
+    align-text: center;
+    background-color: green;
+    color: white;
+  }
+}
