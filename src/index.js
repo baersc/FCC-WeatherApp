@@ -1,7 +1,8 @@
 /* eslint-env browser */
+import { MDCRipple, MDCRippleFoundation, util } from '@material/ripple';
 import './style.scss';
 
-let curTemp;
+let curTemp = 74;
 
 function convTemp() {
     const display = document.getElementById('temp-display');
@@ -22,9 +23,22 @@ function convTemp() {
     }
 }
 
+function displayWeather(data) {
+    curTemp = data.main.temp.toFixed(1);
+
+    document.getElementById('temp-display')
+        .textContent = curTemp;
+
+    document.getElementById('city')
+        .textContent = data.name;
+
+    document.getElementbyId('weather-display')
+        .src = data.weather.icon;
+}
+
 window.onload = () => {
+
     // Get the Weather
-    let wData;
     if (window.XMLHttpRequest) {
         const weather = new XMLHttpRequest();
         (() => {
@@ -39,19 +53,11 @@ window.onload = () => {
                     url = 'https://fcc-weather-api.glitch.me/api/current?lat='
                         .concat(lat, '&lon=', lon);
 
-                    weather.open('GET', url, true);
+                    // Commented out to avoid unnecessary requests
+                    // weather.open('GET', url, true);
                     weather.send();
                     weather.onload = () => {
-                        wData = JSON.parse(weather.responseText);
-                        window.console.log(wData);
-
-                        curTemp = Math.floor(wData.main.temp);
-
-                        document.getElementById('temp-display')
-                            .textContent = curTemp;
-
-                        document.getElementById('city')
-                            .textContent = wData.name;
+                        displayWeather(JSON.parse(weather.responseText));
                     };
                 });
             } else {
@@ -60,7 +66,10 @@ window.onload = () => {
         })();
     }
 
-    document.getElementById('temp-box')
+    document.getElementById('temp-button').classList.add('mdc-button');
+
+    MDCRipple.attachTo(document.querySelector('#temp-button'));
+    document.getElementById('temp-button')
         .addEventListener('click', () => convTemp());
 
     function clock() {
@@ -69,3 +78,4 @@ window.onload = () => {
     }
     setInterval(clock, 1000);
 };
+

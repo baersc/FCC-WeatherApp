@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <script src="bundle.js"></script>
-  <title>baersc Weather App</title>
-</head>
-<body>
-  <div class="display">
-    <p>Test text.</p>
-    <div id="temp-box" class="temp">
-      <span id="temp-display"></span>&deg;
-      <span id="type">C</span>
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="bundle.js"></script>
+    <title>Local Weather</title>
+  </head>
+  <body>
+    <div class="display">
+
+      <div class="city">
+        <h1>Weather for Alpena<span id="city"></span></h1>
+      </div>
+
+      <div class="cards">
+        <div class="image"><img src="https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F01d.png?1499366022009" alt="Current Weather" id="weather-display">
+        </div>
+
+        <div class="temp">
+          <div>
+            <span id="temp-display">17</span><span>&deg;</span>
+            <span id="type">C</span>
+          </div>
+          
+           <button id="temp-button">Far</button>
+          
+        </div>
+
+      </div>
+
+      <div class="date-box">
+        <span id="date"></span>
+      </div>
+
     </div>
-    <div class="date-box">
-      <span id="date"></span>
-    </div>
-    <div class="city">
-        <span id="city"></span>
-    </div>
-  </div>
-</body>
+  </body>
 </html>

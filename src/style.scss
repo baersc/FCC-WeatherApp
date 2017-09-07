@@ -1,28 +1,96 @@
+@import '@material/button/mdc-button';
+@import '@material/ripple/_mixins';
+@import '@material/ripple/_keyframes';
+@import '@material/elevation/_mixins';
+@import '@material/typography/mdc-typography';
+@import '@material/typography/_mixins';
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+
+    // border: 1px black solid;
 }
 
 body {
+    @include mdc-typography-base;
+    background-color: #fdfdfd;
 
-  .display {
-    border: 1px solid black;
-    width: 440px;
-    height: 660px;
+    .display {
+        @include mdc-elevation(8);
+        // border: 1px solid black;
+        width: 440px;
+        height: 660px;
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -330px;
-    margin-left: -220px;
-  }
+        background-color: #ffffff;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -330px;
+        margin-left: -220px;
+        padding: 20px;
+    }
+    .city {
+        h1 {
+            text-align: center;
+            font-size: 1.8em;
+        }
+    }
 
-  .temp {
-    height: 100px;
-    width: 100px;
-    align-text: center;
-    background-color: green;
-    color: white;
-  }
+    .cards {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        margin-top: 10px;
+
+        .image {
+            @include mdc-elevation(2);
+
+            height: 100px;
+            width: 100px;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .temp {
+            @include mdc-elevation(2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+
+            height: 100px;
+            width: 100px;
+
+            span {
+                font-size: 1.2em;
+            }
+
+            #temp-button {
+                @include mdc-ripple-base;
+                @include mdc-ripple-bg((pseudo: '::before'));
+                @include mdc-ripple-fg((pseudo: '::after'));
+
+                cursor: pointer;
+                overflow: hidden;
+
+                font-size: 0.4em;
+
+                height: 30px;
+                width: 80px;
+            }
+        }
+    }
+
+
+    .date-box {
+        text-align: center;
+        margin: 20px auto;
+    }
 }

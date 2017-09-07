@@ -17,7 +17,26 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: [{
+                    loader: 'style-loader',
+                },
+                {
+                    loader: 'css-loader',
+                },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        includePaths: ['./node_modules'],
+                    },
+                }],
+            },
+            {
+                test: /\.ttf$/,
+                use: ['file-loader'],
+            },
+            {
+                test: /\.json$/,
+                use: ['file-loader'],
             },
         ],
     },
