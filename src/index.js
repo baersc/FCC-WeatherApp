@@ -7,6 +7,7 @@ let curTemp = 74;
 function convTemp() {
     const display = document.getElementById('temp-display');
     const type = document.getElementById('type');
+    const button = document.getElementById('b-type');
 
     function far(val) {
         return ((val * (9 / 5)) + 32).toFixed(1);
@@ -16,10 +17,12 @@ function convTemp() {
         display.classList.toggle('far');
         display.textContent = far(curTemp);
         type.textContent = 'F';
+        button.textContent = 'C';
     } else {
         display.classList.toggle('far');
         display.textContent = curTemp;
         type.textContent = 'C';
+        button.textContent = 'F';
     }
 }
 
@@ -66,7 +69,12 @@ window.onload = () => {
         })();
     }
 
-    document.getElementById('temp-button').classList.add('mdc-button');
+    document.getElementById('temp-button').classList.add(
+        'mdc-button',
+        'mdc-button--accent',
+        'mdc-button--raised',
+        'mdc-button--dense',
+    );
 
     MDCRipple.attachTo(document.querySelector('#temp-button'));
     document.getElementById('temp-button')
