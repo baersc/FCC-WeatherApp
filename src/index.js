@@ -1,5 +1,5 @@
 /* eslint-env browser */
-import { MDCRipple, MDCRippleFoundation, util } from '@material/ripple';
+import { MDCRipple } from '@material/ripple';
 import './style.scss';
 
 let curTemp = 74;
@@ -35,12 +35,11 @@ function displayWeather(data) {
     document.getElementById('city')
         .textContent = data.name;
 
-    document.getElementbyId('weather-display')
+    document.getElementById('weather-display')
         .src = data.weather.icon;
 }
 
 window.onload = () => {
-
     // Get the Weather
     if (window.XMLHttpRequest) {
         const weather = new XMLHttpRequest();
@@ -56,11 +55,12 @@ window.onload = () => {
                     url = 'https://fcc-weather-api.glitch.me/api/current?lat='
                         .concat(lat, '&lon=', lon);
 
-                    // Commented out to avoid unnecessary requests
+                    // Comment below line to avoid unnecessary requests
                     // weather.open('GET', url, true);
                     weather.send();
                     weather.onload = () => {
                         displayWeather(JSON.parse(weather.responseText));
+                        window.console.log(JSON.parse(weather.responseText));
                     };
                 });
             } else {

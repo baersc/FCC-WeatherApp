@@ -4,15 +4,12 @@
 @import '@material/elevation/_mixins';
 @import '@material/typography/mdc-typography';
 @import '@material/typography/_mixins';
-@import '@material/theme/mdc-theme';
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 20px;
-
-    // border: 1px black solid;
 }
 
 body {
@@ -34,13 +31,9 @@ body {
         padding: 20px;
     }
     .city {
-        height: 150px;
         h1 {
             text-align: center;
             font-size: 1.8em;
-            span {
-                font-size: 1em;
-            }
         }
     }
 
@@ -49,50 +42,25 @@ body {
         flex-direction: row;
         justify-content: space-around;
 
-        margin-top: -73px;
-
-        .image {
-            @include mdc-elevation(2);
-
-            height: 100px;
-            width: 100px;
-
-            img {
-                height: 100%;
-                width: 100%;
-            }
-        }
-
         .temp {
             @include mdc-elevation(2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
+            @include mdc-ripple-base;
+            @include mdc-ripple-bg((pseudo: '::before'));
+            @include mdc-ripple-fg((pseudo: '::after'));
 
+            cursor: pointer;
+            overflow: hidden;
+
+            display: flex;
             height: 100px;
             width: 100px;
-
-            span {
-                font-size: 1.2em;
-            }
-
-            #temp-button {
-                @include mdc-ripple-base;
-                @include mdc-ripple-bg((pseudo: '::before'));
-                @include mdc-ripple-fg((pseudo: '::after'));
-
-                cursor: pointer;
-                overflow: hidden;
-
-                font-size: 0.6em;
-
-                // height: 30px;
-                // width: 80px;
-            }
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            // border: 1px solid black;
+            padding-top: auto;
         }
     }
-
 
     .date-box {
         text-align: center;
