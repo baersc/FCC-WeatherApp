@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="bundle.js"></script>
     <title>Local Weather</title>
@@ -14,7 +16,8 @@
       </div>
 
       <div class="cards">
-        <div class="image"><img alt="Current Weather" id="weather-display">
+        <div class="image" id="image">
+          <span id="weather-description"></span>
         </div>
 
         <div class="temp">
@@ -24,9 +27,7 @@
           </div>
 
           <button id="temp-button">&deg;<span id="b-type">F</span></button>
-
         </div>
-
       </div>
 
       <div class="date-box">

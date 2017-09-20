@@ -3,6 +3,7 @@ import { MDCRipple } from '@material/ripple';
 import './style.scss';
 
 let curTemp = 74;
+let dataOutput;
 
 function convTemp() {
     const display = document.getElementById('temp-display');
@@ -27,6 +28,7 @@ function convTemp() {
 }
 
 function displayWeather(data) {
+    dataOutput = data;
     curTemp = data.main.temp.toFixed(1);
 
     document.getElementById('temp-display')
@@ -35,8 +37,11 @@ function displayWeather(data) {
     document.getElementById('city')
         .textContent = data.name;
 
-    document.getElementById('weather-display')
-        .src = data.weather.icon;
+    const icon = document.createElement('img');
+    icon.src = data.weather[0].icon;
+
+    document.getElementById('image')
+        .appendChild(icon);
 }
 
 window.onload = () => {
