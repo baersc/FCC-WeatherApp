@@ -29,9 +29,8 @@ body {
         background-color: #ffffff;
     }
     .city {
-        padding-top: 20px;
-        height: 150px;
-        margin-bottom: 10px;
+        padding: 20px;
+        // margin-bottom: 10px;
         background-color: #749de0;
         h1 {
             text-align: center;
@@ -40,6 +39,13 @@ body {
                 font-size: 1em;
             }
         }
+    }
+
+    .divider {
+        margin: 0;
+        padding: 0;
+        height: 73px;
+        background-color: #749de0;
     }
 
     .cards {
@@ -102,8 +108,11 @@ body {
 
     .links {
         display: flex;
-        margin-top: 20px;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: center;
+        align-content: space-around;
+
+        margin: auto 20px;
 
         a {
             display: block;
@@ -135,6 +144,9 @@ body {
         }
 
         .links {
+            flex-direction: row;
+            justify-content: space-around;
+            align-content: center;
             margin-top: 20px;
         }
     }
