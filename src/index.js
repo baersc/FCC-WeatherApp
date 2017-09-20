@@ -2,8 +2,8 @@
 import { MDCRipple } from '@material/ripple';
 import './style.scss';
 
-let curTemp = 74;
-let dataOutput;
+// Do not assign this variable for release
+let curTemp = 19.9;
 
 function convTemp() {
     const display = document.getElementById('temp-display');
@@ -28,8 +28,10 @@ function convTemp() {
 }
 
 function displayWeather(data) {
-    dataOutput = data;
     curTemp = data.main.temp.toFixed(1);
+    const image = document.getElementById('image');
+    const icon = document.createElement('img');
+    const description = document.createElement('span');
 
     document.getElementById('temp-display')
         .textContent = curTemp;
@@ -37,11 +39,11 @@ function displayWeather(data) {
     document.getElementById('city')
         .textContent = data.name;
 
-    const icon = document.createElement('img');
     icon.src = data.weather[0].icon;
-
-    document.getElementById('image')
-        .appendChild(icon);
+    description.textContent = data.weather[0].description;
+    description.classList.add('weather-description');
+    image.appendChild(icon);
+    image.appendChild(description);
 }
 
 window.onload = () => {
@@ -61,7 +63,7 @@ window.onload = () => {
                         .concat(lat, '&lon=', lon);
 
                     // Comment below line to avoid unnecessary requests
-                    // weather.open('GET', url, true);
+                    weather.open('GET', url, true);
                     weather.send();
                     weather.onload = () => {
                         displayWeather(JSON.parse(weather.responseText));
