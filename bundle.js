@@ -445,7 +445,7 @@ function displayWeather(data) {
 }
 
 window.onload = function () {
-    // Get the Weather
+    // Get the Weather from geoloaction
     if (window.XMLHttpRequest) {
         var weather = new XMLHttpRequest();
         (function () {
