@@ -63,7 +63,7 @@ window.onload = () => {
                         .concat(lat, '&lon=', lon);
 
                     // Comment below line to avoid unnecessary requests
-                    weather.open('GET', url, true);
+                    // weather.open('GET', url, true);
                     weather.send();
                     weather.onload = () => {
                         displayWeather(JSON.parse(weather.responseText));
